@@ -1,6 +1,5 @@
 /// Author: XQtbl
 
-use std::borrow::Borrow;
 use std::cmp::min;
 use std::fmt::{Debug, Display};
 use std::io::{stdin, stdout};
@@ -27,35 +26,28 @@ mod tests {
         assert_eq!(String::from_utf8(buf).unwrap(), format!("{}\n", target))
     }
 
-    #[test]
-    fn testcase1() {
-        let input = b"2\n";
-        let n = get_n(input.as_slice());
+    macro_rules! testcase {
+        {$tc_id: ident, $input: literal, $output: literal} => (
+            #[test]
+            fn $tc_id() {
+                let input = $input;
+                let n = get_n(input.as_slice());
 
-        let mut cache = Vec::new();
-        cache.resize(n+1, NOT_EVALED);
+                let mut cache = Vec::new();
+                cache.resize(n+1, NOT_EVALED);
 
-        let out = get_least_cnt(n, &mut cache);
+                let out = get_least_cnt(n, &mut cache);
 
-        let mut outbuf = Vec::<u8>::new();
-        print(&mut outbuf, out);
-        assert_eq!(String::from_utf8(outbuf).unwrap(), format!("{}\n", 1))
+                let mut outbuf = Vec::<u8>::new();
+                print(&mut outbuf, out);
+                assert_eq!(String::from_utf8(outbuf).unwrap(), $output)
+            }
+        )
     }
 
-    #[test]
-    fn testcase2() {
-        let input = b"10\n";
-        let n = get_n(input.as_slice());
-
-        let mut cache = Vec::new();
-        cache.resize(n+1, NOT_EVALED);
-
-        let out = get_least_cnt(n, &mut cache);
-
-        let mut outbuf = Vec::<u8>::new();
-        print(&mut outbuf, out);
-        assert_eq!(String::from_utf8(outbuf).unwrap(), format!("{}\n", 3))
-    }
+    testcase!{testcase1, b"2\n", "1\n"}
+    testcase!{testcase2, b"10\n", "3\n"}
+    testcase!{testcase3, b"1\n", "0\n"}
 }
 
 fn get_n<Output, Reader>(mut cin: Reader) -> Output
