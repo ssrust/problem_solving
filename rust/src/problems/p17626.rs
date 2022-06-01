@@ -1,3 +1,5 @@
+/// Author: juyoung35
+
 use std::io::{stdin, prelude::*};
 fn brute_force(squares: &Vec<usize>, len: usize, n: usize, sum: usize, nth: usize) -> bool {
     if nth == 0 {

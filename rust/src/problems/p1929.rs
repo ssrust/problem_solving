@@ -1,4 +1,4 @@
-#![allow(dead_code)]
+/// Author: XQtbl
 
 pub use improved::*;
 

@@ -1,3 +1,5 @@
+/// Author: XQtbl
+
 use std::borrow::Borrow;
 use std::cmp::min;
 use std::fmt::{Debug, Display};

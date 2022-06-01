@@ -1,3 +1,5 @@
+/// Author: juyoung35
+
 use std::io::{self, prelude::*, BufWriter};
 const NONE    : u8 = 0b_0000;
 const RIGHT   : u8 = 0b_0001;

@@ -1,3 +1,5 @@
+/// Author: XQtbl
+
 #[cfg(test)]
 mod tests {
     #[test]
